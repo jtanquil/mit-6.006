@@ -1,2 +1,3 @@
 *.Identifier
 tests.py
+__pycache__/
