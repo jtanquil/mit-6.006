@@ -1,3 +1,9 @@
 *.Identifier
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+macros-sp20.tex
 tests.py
 __pycache__/
