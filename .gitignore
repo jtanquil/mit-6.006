@@ -4,6 +4,7 @@
 *.fls
 *.log
 *.synctex.gz
+.DS_Store
 macros-sp20.tex
 tests.py
 __pycache__/
