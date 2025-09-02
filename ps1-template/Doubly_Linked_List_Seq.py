@@ -85,8 +85,6 @@ class Doubly_Linked_List_Seq:
                 new_head = old_head.next
                 new_head.prev = None
                 self.head = new_head
-
-            del old_head
         return x
 
     def delete_last(self):
@@ -108,9 +106,7 @@ class Doubly_Linked_List_Seq:
             else:
                 new_tail = old_tail.prev
                 new_tail.next = None
-                self.head = new_tail
-
-            del old_tail
+                self.tail = new_tail
         return x
 
     def remove(self, x1, x2):
@@ -118,10 +114,46 @@ class Doubly_Linked_List_Seq:
         ###########################
         # Part (b): Implement me! # 
         ###########################
+        # connect x1.prev <-> x2.next
+        # edge cases: x1 as the head, x2 as the tail, x1.prev/x2.next are None
+        # x1 none: like arr[:x2] (including x2), x2 none: like arr[x1:]
+        if x1 is None:
+            x1 = self.head
+        
+        if x2 is None:
+            x2 = self.tail
+
+        L2.head = x1
+        L2.tail = x2
+
+        if x1 == self.head:
+            self.head = x2.next
+        
+        if x2 == self.tail:
+            self.tail = x1.prev
+
+        if x1.prev is not None:
+            x1.prev.next = x2.next
+        
+        if x2.next is not None:
+            x2.next.prev = x1.prev
+
         return L2
 
     def splice(self, x, L2):
         ###########################
         # Part (c): Implement me! # 
         ###########################
-        pass
+        # set x <-> L2.head <-> ... <-> L2.tail <-> x.next
+        # edge case: x.next = None => set self.tail = L2.tail
+        old_next = x.next
+        x.next, L2.head.prev = L2.head, x
+
+        if old_next is None:
+            self.tail = L2.tail
+        else:
+            L2.tail.next = old_next
+            old_next.prev = L2.tail
+
+        L2.head = None
+        L2.tail = None
