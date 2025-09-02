@@ -85,24 +85,21 @@
 $$
 E[X] = \sum_{i = 0}^3 iP(\text{flip }i\text{ heads}) = 0\left(\frac{1}{8}\right) + 1\left(\frac{3}{8}\right) + 2\left(\frac{3}{8}\right) + 3\left(\frac{1}{8}\right) = \frac{3}{2}
 $$
-\problempart Let $Z$ be the random variable representing the outcome of rolling one fair six-sided dice. Then $Y = X^2$, and by the properties of expectation,
+\problempart Let $Z_1$ and $Z_2$ be independent random variables each representing the outcome of rolling a fair six-sided dice. Then $Y = Z_1Z_2$, and by the properties of expectation,
 $$
-E[Y] = E[Z^2] = E[(Z - E(Z)^2)] + E[Z]^2 = \Var(Z) + E[Z]^2
+E[Y] = E[Z_1Z_2] = E[Z_1]E[Z_2]
 $$
-Since $Z$ is the discrete uniform distribution on $[1, 6]$, 
+Since $Z_1$ and $Z_2$ are each the discrete uniform distribution on $[1, 6]$,
 $$
-E[Z] = \frac{1 + 6}{2} = \frac{7}{2}
+E[Z_i] = \frac{1 + 6}{2} = \frac{7}{2}
 $$
+so
 $$
-\Var(Z) = \frac{(6 - 1 + 1)^2 - 1}{12} = \frac{35}{12}
-$$
-so 
-$$
-E[Y] = \frac{35}{12} + \left(\frac{7}{2}\right)^2 = \frac{91}{6}
+E[Y]= E[Z_1]E[Z_2] = \left(\frac{7}{2}\right)^2 = \frac{49}{4}.
 $$
 \problempart Using the linearity of expectation,
 $$
-E[X + Y] = E[X] + E[Y] = \frac{3}{2} + \frac{91}{6} = \frac{50}{3}
+E[X + Y] = E[X] + E[Y] = \frac{3}{2} + \frac{49}{4} = \frac{55}{4}
 $$
 \end{problemparts}
 
